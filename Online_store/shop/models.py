@@ -10,7 +10,6 @@ class Category(models.Model):
     # (db_index=True) создает индекс в базе данных по этому полю
 
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
-
     # создание столбца в базе данных с именем slug
     # !!!# присвоение slug значение SlugField предназначенных для хранения коротних меток
     # (max_length=200) задает максимальное значение 200 символов
@@ -27,13 +26,13 @@ class Category(models.Model):
         # Если бы перед 'name' стоял знак минус (например, '-name'),
         # сортировка происходила бы по убыванию.
 
-        verbose_name = 'Категории'
+        verbose_name = 'Categories'
         # verbose_name Устанавливает человекочитаемое имя для одного
         # объекта модели, которое будет использоваться в интерфейсе
         # администратора Django. В данном случае для одной категории будет
         # показано слово "Категория".
 
-        verbose_name_plural = 'Категории'
+        verbose_name_plural = 'Categories'
         # аналогично verbose_name
 
     def __str__(self):
@@ -52,7 +51,7 @@ class Product(models.Model):
     # Определение класса Product, наследующего
     # от models.Model, что делает его моделью базы данных в Django.
 
-    category = models.ForeignKey(Category, related_name='products')
+    category = models.ForeignKey(Category, related_name='products',on_delete=models.CASCADE)
     #  ForeignKey связывающее продукты с категорией
     #  Это создаёт отношение "многие к одному" между продуктами и категориями
     #  related_name='products' позволяет обращаться к продуктам из объекта категории

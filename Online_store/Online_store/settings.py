@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shop',
+    'cart'
+
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'Online_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['shop/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,3 +124,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = '/media/'
+# Эта настройка определяет базовый URL-адрес для обработки файлов,
+# загруженных пользователями в веб-приложении Django.
+# В данном случае, для доступа к медиа-файлам будет использоваться URL, который начинается с /media/.
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+# это путь к локальному каталогу на файловой системе, где Django будет сохранять загруженные файлы.
+# Функция os.path.join() используется для создания этого пути путём соединения
+# базового директория проекта (BASE_DIR) с подкаталогом 'media/'.
+# Все загруженные файлы будут сохраняться в каталоге media внутри директории, где находится проект.
+
+CART_SESSION_ID = 'cart'
+# Это ключ, который мы собираемся использовать для хранения корзины в сессии пользователя.
+# Давайте создадим приложение для управления корзинами покупок.
+# Откройте терминал и создайте новое приложение, запустив следующую команду из каталога проекта

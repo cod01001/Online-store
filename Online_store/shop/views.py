@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 
 
+
 # Импортируются модели Category и Product для использования в этой функции.
 
 
@@ -16,6 +17,7 @@ def product_list(request, category_slug=None):
     category = None
     # !!!# Инициализация переменной category значением None
     # !!!# которая будет использоваться для хранения категории, если таковая найдется.
+    # !!!# это если вдруг не будет категории??
 
     categories = Category.objects.all()
     # Получение всех объектов Category из базы данных.
@@ -53,11 +55,11 @@ def product_detail(request, id, slug):
     # с указанными id и slug, а также у которого свойство available равно True.
     # Если объект не найден, будет возвращён HTTP-ответ 404 (страница не найдена).
 
-    cart_product_form = CartAddProductForm()
+    #cart_product_form = CartAddProductForm()
 #!!!# Создание экземпляра формы CartAddProductForm
     # не понимаю что это
 
     return render(request,
                   'shop/product/detail.html',
-                  {'product':product,
-                   'cart_product_form':cart_product_form})
+                  {'product':product,})
+                   #'cart_product_form':cart_product_form})
