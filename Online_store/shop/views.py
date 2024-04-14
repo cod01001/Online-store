@@ -15,9 +15,9 @@ def product_list(request, category_slug=None):
     # request и необязательный аргумент category_slug, по умолчанию равный None.
 
     category = None
-    # !!!# Инициализация переменной category значением None
-    # !!!# которая будет использоваться для хранения категории, если таковая найдется.
-    # !!!# это если вдруг не будет категории??
+    #!!!# Инициализация переменной category значением None
+    #!!!# которая будет использоваться для хранения категории, если таковая найдется.
+    #!!!# это если вдруг не будет категории??
 
     categories = Category.objects.all()
     # Получение всех объектов Category из базы данных.
@@ -55,7 +55,7 @@ def product_detail(request, id, slug):
     # с указанными id и slug, а также у которого свойство available равно True.
     # Если объект не найден, будет возвращён HTTP-ответ 404 (страница не найдена).
 
-    #cart_product_form = CartAddProductForm()
+    cart_product_form = CartAddProductForm()
 #!!!# Создание экземпляра формы CartAddProductForm
     # не понимаю что это
 
