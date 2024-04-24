@@ -40,7 +40,9 @@ def cart_add(request, product_id):
         # Перенаправление пользователя на URL с именем 'cart_detail'
 
 
-    
+
+
+# слайд 33
 # получает id продукта в качестве параметра, мы извлекаем продукт с заданным id и удаляем его из корзины,
 # затем перенапрявляем пользователя на URL адрес cart_detail.
 def cart_remove(request, product_id):
@@ -57,5 +59,22 @@ def cart_detail(request):
                      'update': True})
 
     return render(request, 'cart/detail.html',{'cart':cart})
+
+
+# сайд 36
+# кнопка "добавить в корзину"
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product,
+                                id=id,
+                                slug=slug,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request,
+                  'shop/product/detail.html',
+                  {'product':product,
+                   'cart_product_form': cart_product_form})
+
+
+
 
 

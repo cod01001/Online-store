@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'cart'
-
+    'cart',
+    'orders',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'Online_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['shop/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -141,3 +143,7 @@ CART_SESSION_ID = 'cart'
 # Это ключ, который мы собираемся использовать для хранения корзины в сессии пользователя.
 # Давайте создадим приложение для управления корзинами покупок.
 # Откройте терминал и создайте новое приложение, запустив следующую команду из каталога проекта
+
+# slide 58
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
